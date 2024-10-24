@@ -209,4 +209,6 @@ mv ./kubectl ~/.local/bin/kubectl
 ```
 kubectl version --client
 ```
+#### Install ArgoCD 
 
+Go to this location https://operatorhub.io/operator/argocd-operator and Install
