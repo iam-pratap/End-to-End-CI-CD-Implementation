@@ -133,3 +133,80 @@ The docker agent configuration is now successful.
 <img width="1392" alt="Screenshot 2024-10-24 at 18 20 27 PM" src="https://github.com/user-attachments/assets/cac16383-f043-442b-b5b8-babdafd367af">
 
 Wait for the Jenkins to be restarted.
+
+### Configure a Sonar Server locally
+
+```
+apt install unzip
+adduser sonarqube
+sudo su sonarqube
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
+unzip *
+chmod -R 755 /home/sonarqube/sonarqube-9.4.0.54424
+chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424
+cd sonarqube-9.4.0.54424/bin/linux-x86-64/
+./sonar.sh start
+```
+Check the sonarqube status `./sonar.sh status`
+
+Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000` 
+
+Login username-admin , password-admin and Update with new password
+
+### Add Sonarqube credentials in Jenkins
+
+- Go to sonarqube > my account > security > generate-tokens
+- Go to jenkins > manage jenkins > system > global credential(unrestricted)
+- new credentials > secret text
+- scope - Global(jenkins, nodes, items, all child items etc)
+- secret - fdc07fb48b543afe1cf2f492ea4c2eaf78b7ffad
+- ID - sonarqube
+restart jenkins
+
+Note: Create a new instance for kubernetes and ArgoCD
+
+### Install and Configure Kubernetes
+
+#### Update the Server
+
+```
+sudo apt update -y
+```
+#### Install docker and set the permissions
+
+```
+sudo apt install docker.io -y
+```
+```
+sudo usermod -aG docker $USER && newgrp docker
+```
+
+#### Install minikube
+```
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+```
+```
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+```
+```
+minikube start
+```
+#### Install Kubectl
+
+```
+sudo curl -LO https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubectl
+```
+```
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+```
+```
+
+chmod +x kubectl
+mkdir -p ~/.local/bin
+mv ./kubectl ~/.local/bin/kubectl
+```
+
+```
+kubectl version --client
+```
+
