@@ -209,6 +209,71 @@ mv ./kubectl ~/.local/bin/kubectl
 ```
 kubectl version --client
 ```
-#### Install ArgoCD 
+#### Install ArgoCD on Kubernetes
 
-Go to this location https://operatorhub.io/operator/argocd-operator and Install
+Referance https://operatorhub.io/operator/argocd-operator
+
+1. Install Operator Lifecycle Manager (OLM), a tool to help manage the Operators running on your cluster
+```
+curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.29.0/install.sh | bash -s v0.29.0
+```
+
+2. Install the operator by running the following command:
+```
+kubectl create -f https://operatorhub.io/install/argocd-operator.yaml
+```
+3. After install, watch your operator come up using next command.
+```
+kubectl get csv -n operators
+```
+
+The following example shows the most minimal valid manifest to create a new Argo CD cluster with the default configuration.
+
+vi argocd-basic.yml
+```
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: example-argocd
+  labels:
+    example: basic
+spec: {}
+```
+Apply this configuration using `kubectl apply -f argocd-basic.yml`
+
+check if all services are came up or not `kubectl get svc`
+
+Change this service example-argocd-repo-server from ClusterIP to NodePort
+```
+kubectl edit svc example-argocd-repo-server
+```
+#### Forward port
+
+```
+kubectl port-forward --address 0.0.0.0 svc/example-argocd-server 30453:80
+```
+Go to browser and paste this `public-IP:30453`
+
+<img width="1392" alt="Screenshot 2024-10-25 at 15 47 40 PM" src="https://github.com/user-attachments/assets/910a17a9-abb1-40f0-bdf2-ab5935070e35">
+
+Paste the username and password
+
+username - admin
+password
+
+Go to the terminal and do `kubectl get secret`
+
+```
+kubectl edit secret example-argocd-cluster
+```
+Now you will get the administrator password but you need to change this in base64
+
+```
+echo <Administrator-password> | base64 -d
+```
+Now you will get the argocd password
+
+
+```
+
+
