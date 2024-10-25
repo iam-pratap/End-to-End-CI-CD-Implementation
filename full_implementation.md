@@ -273,7 +273,14 @@ echo <Administrator-password> | base64 -d
 ```
 Now you will get the argocd password
 
+LoggedIn
 
-```
+- Create application
+- Application name : test
+- Project name : default
+- Sync policy : Automatic
+- Repository URL : https://github.com/iam-pratap/End-to-End-CI-CD-Implementation.git
+- path : java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/
 
+<img width="1392" alt="Screenshot 2024-10-25 at 15 10 02 PM" src="https://github.com/user-attachments/assets/00a9ff93-5841-412e-b2d7-3227a3496b87">
 
