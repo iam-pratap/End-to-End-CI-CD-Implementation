@@ -9,7 +9,7 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        //git branch: 'main', url: 'https://github.com/iam-pratap/End-to-End-CI-CD-Implementation-.git'
+        //git branch: 'main', url: 'https://github.com/iam-pratap/End-to-End-CI-CD-Implementation.git'
       }
     }
     stage('Build and Test') {
@@ -47,7 +47,7 @@ pipeline {
     }
     stage('Update Deployment File') {
         environment {
-            GIT_REPO_NAME = "End-to-End-CI-CD-Implementation-"
+            GIT_REPO_NAME = "End-to-End-CI-CD-Implementation"
             GIT_USER_NAME = "iam-pratap"
         }
         steps {
