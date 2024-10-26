@@ -78,7 +78,9 @@ Wait for the Jenkins to be restarted.
 
  apply and save
 
- ## Install the Sonar Qube Scanner plugin in Jenkins:
+## Sonarqube
+
+### Install the Sonar Qube Scanner plugin in Jenkins:
 
    - Go to Manage Jenkins > Manage Plugins.
    - In the Available tab, search for "SonarQube Scanner".
@@ -119,7 +121,9 @@ Login username-admin , password-admin and Update with new password
 
 restart jenkins
 
-## Install the Docker Pipeline plugin in Jenkins:
+## Docker
+
+### Install the Docker Pipeline plugin in Jenkins:
 
    - Go to Manage Jenkins > Manage Plugins.
    - In the Available tab, search for "Docker Pipeline".
@@ -131,7 +135,7 @@ restart jenkins
 Wait for the Jenkins to be restarted.
 
 
-## Docker Slave Configuration
+### Docker Slave Configuration
 
 Run the below command to Install Docker
 
@@ -178,7 +182,7 @@ The docker agent configuration is now successful.
 
 Once you are done with the above steps, it is better to restart Jenkins.
 
-Note: Create a new instance for kubernetes and ArgoCD
+**Note: Create a new instance for kubernetes and ArgoCD**
 
 ### Install and Configure Kubernetes
 
