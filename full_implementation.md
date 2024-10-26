@@ -73,6 +73,18 @@ Jenkins Installation is Successful. You can now starting using the Jenkins
 
 Wait for the Jenkins to be restarted.
 
+### Create a Jenkins Pipeline
+
+- GO to dashboard > new item > create job
+- item name:- ultimate cicd > item type : pipeline
+- pipeline defination : pipeline script from SCM
+- SCM : git
+- Repository URL : https://github.com/iam-pratap/End-to-End-CI-CD-Implementation.git
+- Branch specifier : */main
+- script path : java-maven-sonar-argocd-helm-k8s/spring-boot-app/JenkinsFile
+
+ apply and save
+
 ## Install the Docker Pipeline plugin in Jenkins:
 
    - Go to Manage Jenkins > Manage Plugins.
@@ -110,18 +122,6 @@ http://<ec2-instance-public-ip>:8080/restart
 ```
 
 The docker agent configuration is now successful.
-
-### Create a Jenkins Pipeline
-
-- GO to dashboard > new item > create job
-- item name:- ultimate cicd > item type : pipeline
-- pipeline defination : pipeline script from SCM
-- SCM : git
-- Repository URL : https://github.com/iam-pratap/End-to-End-CI-CD-Implementation.git
-- Branch specifier : */main
-- script path : java-maven-sonar-argocd-helm-k8s/spring-boot-app/JenkinsFile
-
- apply and save
 
 ## Install the Sonar Qube Scanner plugin in Jenkins:
 
