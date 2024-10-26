@@ -117,9 +117,9 @@ The docker agent configuration is now successful.
 - item name:- ultimate cicd > item type : pipeline
 - pipeline defination : pipeline script from SCM
 - SCM : git
-- Repository URL : https://github.com/iam-pratap/End-to-End-CI-CD-Implementation-.git
+- Repository URL : https://github.com/iam-pratap/End-to-End-CI-CD-Implementation.git
 - Branch specifier : */main
-- script path : spring-boot-app/JenkinsFile
+- script path : java-maven-sonar-argocd-helm-k8s/spring-boot-app/JenkinsFile
 
  apply and save
 
