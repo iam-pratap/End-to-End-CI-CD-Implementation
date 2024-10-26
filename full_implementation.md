@@ -45,17 +45,10 @@ After you login to Jenkins,
       
 <img width="1291" alt="Screenshot 2023-02-01 at 10 56 25 AM" src="https://user-images.githubusercontent.com/43399466/215959008-3ebca431-1f14-4d81-9f12-6bb232bfbee3.png">
 
-### Click on Install suggested plugins
-
-<img width="1291" alt="Screenshot 2023-02-01 at 10 58 40 AM" src="https://user-images.githubusercontent.com/43399466/215959294-047eadef-7e64-4795-bd3b-b1efb0375988.png">
-
-Wait for the Jenkins to Install suggested plugins
-
-<img width="1291" alt="Screenshot 2023-02-01 at 10 59 31 AM" src="https://user-images.githubusercontent.com/43399466/215959398-344b5721-28ec-47a5-8908-b698e435608d.png">
-
-Create First Admin User or Skip the step [If you want to use this Jenkins instance for future use-cases as well, better to create admin user]
-
-<img width="990" alt="Screenshot 2024-10-24 at 10 21 43 AM" src="https://github.com/user-attachments/assets/3b2eae58-399b-4cf1-a682-73c75d66032a">
+### Getting started
+- Click on Install suggested plugins
+- Wait for the Jenkins to Install suggested plugins
+- Create First Admin User or Skip the step [If you want to use this Jenkins instance for future use-cases as well, better to create admin user]
 
 Jenkins Installation is Successful. You can now starting using the Jenkins 
 
