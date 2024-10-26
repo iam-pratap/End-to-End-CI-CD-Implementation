@@ -78,6 +78,47 @@ Wait for the Jenkins to be restarted.
 
  apply and save
 
+ ## Install the Sonar Qube Scanner plugin in Jenkins:
+
+   - Go to Manage Jenkins > Manage Plugins.
+   - In the Available tab, search for "SonarQube Scanner".
+   - Select the plugin and click the Install button.
+   - Restart Jenkins after the plugin is installed.
+   
+<img width="1392" alt="Screenshot 2024-10-24 at 18 20 27 PM" src="https://github.com/user-attachments/assets/cac16383-f043-442b-b5b8-babdafd367af">
+
+Wait for the Jenkins to be restarted.
+
+### Configure a Sonar Server locally
+
+```
+apt install unzip
+adduser sonarqube
+sudo su sonarqube
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
+unzip *
+chmod -R 755 /home/sonarqube/sonarqube-9.4.0.54424
+chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424
+cd sonarqube-9.4.0.54424/bin/linux-x86-64/
+./sonar.sh start
+```
+Check the sonarqube status `./sonar.sh status`
+
+Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000` 
+
+Login username-admin , password-admin and Update with new password
+
+### Add Sonarqube credentials in Jenkins
+
+- Go to sonarqube > my account > security > generate-tokens
+- Go to jenkins > manage jenkins > system > global credential(unrestricted)
+- new credentials > secret text
+- scope - Global(jenkins, nodes, items, all child items etc)
+- secret - fdc07fb48b543afe1cf2f492ea4c2eaf78b7ffad
+- ID - sonarqube
+
+restart jenkins
+
 ## Install the Docker Pipeline plugin in Jenkins:
 
    - Go to Manage Jenkins > Manage Plugins.
@@ -116,45 +157,6 @@ http://<ec2-instance-public-ip>:8080/restart
 
 The docker agent configuration is now successful.
 
-## Install the Sonar Qube Scanner plugin in Jenkins:
-
-   - Go to Manage Jenkins > Manage Plugins.
-   - In the Available tab, search for "SonarQube Scanner".
-   - Select the plugin and click the Install button.
-   - Restart Jenkins after the plugin is installed.
-   
-<img width="1392" alt="Screenshot 2024-10-24 at 18 20 27 PM" src="https://github.com/user-attachments/assets/cac16383-f043-442b-b5b8-babdafd367af">
-
-Wait for the Jenkins to be restarted.
-
-### Configure a Sonar Server locally
-
-```
-apt install unzip
-adduser sonarqube
-sudo su sonarqube
-wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
-unzip *
-chmod -R 755 /home/sonarqube/sonarqube-9.4.0.54424
-chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424
-cd sonarqube-9.4.0.54424/bin/linux-x86-64/
-./sonar.sh start
-```
-Check the sonarqube status `./sonar.sh status`
-
-Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000` 
-
-Login username-admin , password-admin and Update with new password
-
-### Add GitHub credentials in Jenkins
-
-- Go to github > setting > developer-setting > personal access token > tokens(classic)
-- Go to jenkins > manage jenkins > system > global credential(unrestricted)
-- new credentials > secret text
-- scope - Global(jenkins, nodes, items, all child items etc)
-- secret - <secret-text>
-- ID - github
-
 ### Add DockerHub credentials in Jenkins
 
 - Go to dockerhub > my account > account setting > personal access token
@@ -165,16 +167,16 @@ Login username-admin , password-admin and Update with new password
 - password - <password> 
 - ID - docker-cred
 
-### Add Sonarqube credentials in Jenkins
+### Add GitHub credentials in Jenkins
 
-- Go to sonarqube > my account > security > generate-tokens
+- Go to github > setting > developer-setting > personal access token > tokens(classic)
 - Go to jenkins > manage jenkins > system > global credential(unrestricted)
 - new credentials > secret text
 - scope - Global(jenkins, nodes, items, all child items etc)
-- secret - fdc07fb48b543afe1cf2f492ea4c2eaf78b7ffad
-- ID - sonarqube
+- secret - <secret-text>
+- ID - github
 
-restart jenkins
+Once you are done with the above steps, it is better to restart Jenkins.
 
 Note: Create a new instance for kubernetes and ArgoCD
 
