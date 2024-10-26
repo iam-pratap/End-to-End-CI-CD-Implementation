@@ -50,7 +50,7 @@ After you login to Jenkins,
 - Wait for the Jenkins to Install suggested plugins
 - Create First Admin User or Skip the step [If you want to use this Jenkins instance for future use-cases as well, better to create admin user]
 
-Jenkins Installation is Successful. You can now starting using the Jenkins 
+Jenkins Installation is Successful. You can now starting using the Jenkins  
 
 <img width="990" alt="Screenshot 2024-10-24 at 10 25 41 AM" src="https://user-images.githubusercontent.com/43399466/215961440-3f13f82b-61a2-4117-88bc-0da265a67fa7.png">
 
@@ -182,9 +182,11 @@ The docker agent configuration is now successful.
 
 Once you are done with the above steps, it is better to restart Jenkins.
 
-**Note: Create a new instance for kubernetes and ArgoCD**
+## Kubernetes
 
 ### Install and Configure Kubernetes
+
+**Note: Create a new instance for kubernetes and ArgoCD**
 
 #### Update the Server
 
@@ -228,6 +230,9 @@ mv ./kubectl ~/.local/bin/kubectl
 ```
 kubectl version --client
 ```
+
+## ArgoCD
+
 #### Install ArgoCD on Kubernetes
 
 Referance https://operatorhub.io/operator/argocd-operator
