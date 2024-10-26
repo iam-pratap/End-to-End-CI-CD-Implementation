@@ -153,6 +153,25 @@ Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000
 
 Login username-admin , password-admin and Update with new password
 
+### Add GitHub credentials in Jenkins
+
+- Go to github > setting > developer-setting > personal access token > tokens(classic)
+- Go to jenkins > manage jenkins > system > global credential(unrestricted)
+- new credentials > secret text
+- scope - Global(jenkins, nodes, items, all child items etc)
+- secret - <secret-text>
+- ID - github
+
+### Add DockerHub credentials in Jenkins
+
+- Go to dockerhub > my account > account setting > personal access token
+- Go to jenkins > manage jenkins > system > global credential(unrestricted)
+- new credentials > username and password
+- scope - Global(jenkins, nodes, items, all child items etc)
+- username - pratap15
+- password - <password> 
+- ID - docker-cred
+
 ### Add Sonarqube credentials in Jenkins
 
 - Go to sonarqube > my account > security > generate-tokens
@@ -161,6 +180,7 @@ Login username-admin , password-admin and Update with new password
 - scope - Global(jenkins, nodes, items, all child items etc)
 - secret - fdc07fb48b543afe1cf2f492ea4c2eaf78b7ffad
 - ID - sonarqube
+
 restart jenkins
 
 Note: Create a new instance for kubernetes and ArgoCD
